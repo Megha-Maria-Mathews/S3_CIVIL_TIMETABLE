@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <title>TIMETABLE</title>
+  </head>
+  <body>
+    <h1>S3 CIVIL ENGINEERING <br />TIMETABLE</h1>
+    <p id="clockbox" style="color: rgb(199, 140, 51)"></p>
+    <br />
+    <table class="myTimetable">
+      <thead>
+        <tr>
+          <th>Time</th>
+          <th>Monday</th>
+          <th>Tuesday</th>
+          <th>Wednesday</th>
+          <th>Thursday</th>
+          <th>Friday</th>
+          <th>Saturday</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>08:30</td>
+          <td>
+            <div class="subject"><b>Mechanics of Solids</b></div>
+          </td>
+          <td>
+            <div class="subject"><b>Fluid Mechanics</b></div>
+          </td>
+          <td>
+            <div class="subject"><b>Surveying & Geomatics</b></div>
+          </td>
+          <td>
+            <div class="subject"><b>Fluid Mechanics</b></div>
+          </td>
+          <td>
+            <div class="subject"><b>Minor</b></div>
+          </td>
+          <td>
+            <div class="subject"><b>CEPD Lab</b></div>
+          </td>
+        </tr>
+        <tr>
+          <td>09:30</td>
+          <td>
+            <div class="subject"><b>Fluid Mechanics</b></div>
+          </td>
+          <td>
+            <div class="subject"><b>Surveying & Geomatics</b></div>
+          </td>
+          <td>
+            <div class="subject">
+              <b>Partial Differential Equation and Complex Analysis</b>
+            </div>
+          </td>
+          <td>
+            <div class="subject"><b>Minor</b></div>
+          </td>
+          <td>
+            <div class="subject"><b>Mechanics of Solids</b></div>
+          </td>
+          <td>
+            <div class="subject"><b>CEPD Lab</b></div>
+          </td>
+        </tr>
+        <tr>
+          <td>10:30</td>
+          <td>
+            <div class="subject"><b>Surveying & Geomatics</b></div>
+          </td>
+          <td>
+            <div class="subject">
+              <b>Partial Differential Equation and Complex Analysis</b>
+            </div>
+          </td>
+          <td>
+            <div class="subject"><b>Minor</b></div>
+          </td>
+          <td>
+            <div class="subject"><b>Survey Lab</b></div>
+          </td>
+          <td>
+            <div class="subject"><b>Professional Ethics</b></div>
+          </td>
+          <td>
+            <div class="subject"><b>Surveying & Geomatics</b></div>
+          </td>
+        </tr>
+        <tr>
+          <td>11:30</td>
+          <td>
+            <div class="subject">
+              <b>Partial Differential Equation and Complex Analysis</b>
+            </div>
+          </td>
+          <td>
+            <div class="subject"><b>Minor</b></div>
+          </td>
+          <td>
+            <div class="subject"><b>Mechanics of Solids</b></div>
+          </td>
+          <td>
+            <div class="subject"><b>Survey Lab</b></div>
+          </td>
+          <td>
+            <div class="subject"><b>Professional Ethics</b></div>
+          </td>
+          <td>
+            <div class="subject"><b>Placement Training</b></div>
+          </td>
+        </tr>
+        <tr>
+          <td>12:30</td>
+          <td>
+            <div class="subject"><b>Mechanics of Solids</b></div>
+          </td>
+          <td>
+            <div class="subject"><b>Mechanics of Solids</b></div>
+          </td>
+          <td>
+            <div class="subject"><b>Fluid Mechanics</b></div>
+          </td>
+          <td>
+            <div class="subject">
+              <b>Partial Differential Equation and Complex Analysis</b>
+            </div>
+          </td>
+          <td>
+            <div class="subject"><b>Surveying & Geomatics</b></div>
+          </td>
+          <td>
+            <div class="subject"><b>Surveying & Geomatics</b></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="credits">
+      <br /><br />
+      <p>
+        Created by
+        <a href="https://github.com/Megha-Maria-Mathews">
+          Megha Maria Mathews</a
+        >
+      </p>
+    </div>
+    <script type="text/javascript">
+      var tday = [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ];
+      var tmonth = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ];
+
+      function GetClock() {
+        var d = new Date();
+        var nday = d.getDay(),
+          nmonth = d.getMonth(),
+          ndate = d.getDate(),
+          nyear = d.getFullYear();
+        var nhour = d.getHours(),
+          nmin = d.getMinutes(),
+          nsec = d.getSeconds(),
+          ap;
+
+        if (nhour == 0) {
+          ap = " AM";
+          nhour = 12;
+        } else if (nhour < 12) {
+          ap = " AM";
+        } else if (nhour == 12) {
+          ap = " PM";
+        } else if (nhour > 12) {
+          ap = " PM";
+          nhour -= 12;
+        }
+
+        if (nmin <= 9) nmin = "0" + nmin;
+        if (nsec <= 9) nsec = "0" + nsec;
+
+        var clocktext =
+          "" +
+          tday[nday] +
+          ", " +
+          tmonth[nmonth] +
+          " " +
+          ndate +
+          ", " +
+          nyear +
+          " " +
+          nhour +
+          ":" +
+          nmin +
+          ":" +
+          nsec +
+          ap +
+          "";
+        document.getElementById("clockbox").innerHTML = clocktext;
+      }
+
+      GetClock();
+      setInterval(GetClock, 1000);
+    </script>
+  </body>
+</html>
